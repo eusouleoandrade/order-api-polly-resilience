@@ -10,19 +10,23 @@ namespace OAPR.Domain.Entities
 
         public decimal Price { get; private set; }
 
-        public Order(string description, int quantity, decimal price)
+        public int ClientId { get; private set; }
+
+        public Order(string description, int quantity, decimal price, int clientId)
         {
             Description = description;
             Quantity = quantity;
             Price = price;
+            ClientId = clientId;
         }
 
-        public Order(int id, string description, int quantity, decimal price)
+        public Order(int id, string description, int quantity, decimal price, int clientId)
         {
             Id = id;
             Description = description;
             Quantity = quantity;
             Price = price;
+            ClientId = clientId;
         }
     }
 }

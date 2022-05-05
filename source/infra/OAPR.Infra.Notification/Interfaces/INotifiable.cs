@@ -8,8 +8,8 @@ namespace OAPR.Infra.Notification.Interfaces
 
         bool HasSuccessNotification { get; }
 
-        IReadOnlyList<NotificationMessage> ErrorNotificationResult { get; }
+        IReadOnlyList<NotificationMessage> ErrorNotifications { get; }
 
-        IReadOnlyList<NotificationMessage> SuccessNotificationResult { get; }
+        IReadOnlyList<NotificationMessage> SuccessNotifications { get; }
     }
 }
