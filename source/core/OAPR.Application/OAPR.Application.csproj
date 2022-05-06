@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OAPR.Domain\OAPR.Domain.csproj" />
+    <ProjectReference Include="..\..\infra\OAPR.Infra.Notification\OAPR.Infra.Notification.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

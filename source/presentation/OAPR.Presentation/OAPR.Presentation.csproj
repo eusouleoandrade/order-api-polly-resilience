@@ -10,4 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\infra\OAPR.Infra.BackOfficeIntegration\OAPR.Infra.BackOfficeIntegration.csproj" />
+  </ItemGroup>
+
 </Project>

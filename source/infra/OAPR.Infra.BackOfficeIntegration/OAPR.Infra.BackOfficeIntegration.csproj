@@ -3,6 +3,12 @@
   <ItemGroup>
     <ProjectReference Include="..\..\core\OAPR.Application\OAPR.Application.csproj" />
     <ProjectReference Include="..\..\core\OAPR.Domain\OAPR.Domain.csproj" />
+    <ProjectReference Include="..\OAPR.Infra.Notification\OAPR.Infra.Notification.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <PropertyGroup>
