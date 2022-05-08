@@ -13,10 +13,9 @@ namespace OAPR.Application.Dtos.Wrappers
 
         public T Data { get; private set; }
 
-        public Response(bool succeeded, T data, string? message, IEnumerable<string>? errors)
+        public Response(bool succeeded, T data, string? message = null, IEnumerable<string>? errors =  null)
         {
             Succeeded = succeeded;
-            Errors = errors;
             Data = data;
 
             if (String.IsNullOrEmpty(message) || String.IsNullOrWhiteSpace(message))
