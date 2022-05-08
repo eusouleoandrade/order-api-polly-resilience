@@ -24,7 +24,7 @@ namespace OAPR.Presentation.Controllers.v1
 
             // var response = _mapper.Map<CreateTransactionQuery>(responseModel);
             await Task.CompletedTask;
-            return Ok();
+            return Ok(new Response(succeeded: true));
         }
     }
 }
