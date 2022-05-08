@@ -11,7 +11,7 @@ namespace OAPR.Presentation.Extensions
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(10);
             services.AddHttpClient("OrderIntegrationService", (c) =>
             {
-                c.BaseAddress = new Uri(configuration.GetValue<String>("ApiProdutos:UrlBase"));
+                c.BaseAddress = new Uri(configuration.GetValue<String>("ApiOrderSettings:BaseAddress"));
                 c.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             }).AddPolicyHandler(ResilienceConfig.GetRetryPolicy()).AddPolicyHandler(timeoutPolicy);
         }
