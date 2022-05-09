@@ -1,3 +1,4 @@
+using OAPR.Application.IoC;
 using OAPR.Infra.BackOfficeIntegration.IoC;
 using OAPR.Presentation.Extensions;
 
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddIntegrationInfra();
+builder.Services.AddIntegrationInfraLayer();
+builder.Services.AddApplicationLayer();
 builder.Services.AddHttpClientOrderIntegrationService(configuration);
 builder.Services.AddSwaggerExtension();
 builder.Services.AddControllers();

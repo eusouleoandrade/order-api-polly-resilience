@@ -32,8 +32,9 @@ namespace OAPR.Infra.BackOfficeIntegration.Services
             }
             catch (Exception ex)
             {
-                // TODO: Implement global exception handling
                 _logger.LogError(ex.Message, ex);
+
+                // TODO: Implement global exception handling
                 throw new ApiException(ex.Message);
             }
             finally

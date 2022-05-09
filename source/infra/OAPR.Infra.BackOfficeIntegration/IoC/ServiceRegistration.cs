@@ -6,8 +6,9 @@ namespace OAPR.Infra.BackOfficeIntegration.IoC
 {
     public static class ServiceRegistration
     {
-        public static void AddIntegrationInfra(this IServiceCollection services)
+        public static void AddIntegrationInfraLayer(this IServiceCollection services)
         {
+            // Integration services
             services.AddTransient<IOrderIntegrationService, OrderIntegrationService>();
         }
     }

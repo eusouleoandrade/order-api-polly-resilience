@@ -1,7 +1,8 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OAPR.Application.Dtos.Requests;
-using OAPR.Application.Dtos.Responses;
 using OAPR.Application.Dtos.Wrappers;
+using OAPR.Application.Interfaces.UseCases;
 using OAPR.Presentation.Controllers.Common;
 
 namespace OAPR.Presentation.Controllers.v1
@@ -9,20 +10,26 @@ namespace OAPR.Presentation.Controllers.v1
     [ApiVersion("1.0")]
     public class OrderController : BaseApiController
     {
-        public OrderController()
+        private readonly IMapper _mapper;
+
+        private readonly IOrderUpdateUseCase _orderUpdateUseCase;
+
+        public OrderController(IMapper mapper, IOrderUpdateUseCase orderUpdateUseCase)
         {
+            _mapper = mapper;
+            _orderUpdateUseCase = orderUpdateUseCase;
         }
 
-        [HttpPut]
-        public async Task<ActionResult<Response>> Put([FromBody] OrderUpdateRequest request)
+        [HttpPut("{clientId}")]
+        public async Task<ActionResult<Response>> Put(int clientId, [FromBody] OrderUpdateRequest request)
         {
-            // var requestModel = _mapper.Map<CreateTransactionUseCaseRequestModel>(request);
-            // var responseModel = await _createTransactionUseCase.Handler(requestModel);
+            var useCaseRequest = _mapper.Map<OrderUpdateUseCaseRequest>(request, opt => opt.AfterMap((src, dest) => dest.ClientId = clientId));
 
-            // if (_createTransactionUseCase.HasErrorNotification)
-            //     return BadRequest(new Response(_createTransactionUseCase.ErrorNotificationResult.Select(s => s.Message)));
+            await _orderUpdateUseCase.ExecuteAsync(useCaseRequest);
 
-            // var response = _mapper.Map<CreateTransactionQuery>(responseModel);
+            if (_orderUpdateUseCase.HasErrorNotification)
+                return BadRequest(new Response(succeeded: false, errors: _orderUpdateUseCase.ErrorNotifications.Select(s => s.Message)));
+
             await Task.CompletedTask;
             return Ok(new Response(succeeded: true));
         }
