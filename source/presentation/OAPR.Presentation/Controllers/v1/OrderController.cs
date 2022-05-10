@@ -30,7 +30,6 @@ namespace OAPR.Presentation.Controllers.v1
             if (_orderUpdateUseCase.HasErrorNotification)
                 return BadRequest(new Response(succeeded: false, errors: _orderUpdateUseCase.ErrorNotifications.Select(s => s.Message)));
 
-            await Task.CompletedTask;
             return Ok(new Response(succeeded: true));
         }
     }
